@@ -1,0 +1,32 @@
+{
+  "WHO_BEC_2020": {
+    "source_id": "WHO_BEC_2020",
+    "source_title": "Basic Emergency Care: Approach to the Acutely Ill and Injured",
+    "organization": "World Health Organization & International Committee of the Red Cross",
+    "guideline_identifier": "WHO-ICRC BEC 2020 (ISBN 978-92-4-151446-0)",
+    "section_number": "Module 2 (ABCDE Approach) & Module 3 (Airway/Breathing/Circulation/Disability)",
+    "publication_date": "2020-01",
+    "target_population": "Adults and adolescents (aged 18 and above)",
+    "source_url": "https://www.who.int/publications/i/item/9789241514460"
+  },
+  "NICE_CG95_2016": {
+    "source_id": "NICE_CG95_2016",
+    "source_title": "Chest pain of recent onset: assessment and diagnosis",
+    "organization": "National Institute for Health and Care Excellence",
+    "guideline_identifier": "NICE Clinical Guideline CG95",
+    "section_number": "Section 1.1: Presentation with acute chest pain",
+    "publication_date": "2010-03 (updated 2016-11)",
+    "target_population": "Adults aged 18 and older presenting with recent-onset chest pain",
+    "source_url": "https://www.nice.org.uk/guidance/cg95"
+  },
+  "NICE_NG51_2016": {
+    "source_id": "NICE_NG51_2016",
+    "source_title": "Sepsis: recognition, diagnosis and early management",
+    "organization": "National Institute for Health and Care Excellence",
+    "guideline_identifier": "NICE Guideline NG51",
+    "section_number": "Table 1: Risk criteria for adults aged 18 and over with suspected sepsis",
+    "publication_date": "2016-07 (updated 2024-01)",
+    "target_population": "Adults aged 18 and over with suspected infection or fever",
+    "source_url": "https://www.nice.org.uk/guidance/ng51"
+  }
+}

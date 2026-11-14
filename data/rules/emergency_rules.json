@@ -1,0 +1,116 @@
+[
+  {
+    "rule_id": "WHO_BEC_EMERG_01",
+    "name": "WHO Adult Triage: Obstructed Airway or Stridor at Rest",
+    "description": "Any adult presenting with anatomical airway compromise or audible stridor at rest requires immediate emergency intervention.",
+    "category": "emergency_override",
+    "priority": 100,
+    "is_emergency_override": true,
+    "validation_status": "clinically_validated",
+    "source_id": "WHO_BEC_2020",
+    "section_number": "Module 3: Airway and Breathing, Danger Signs",
+    "antecedents": [
+      {
+        "fact_name": "stridor_at_rest",
+        "operator": "==",
+        "expected_value": true,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "EMERGENCY",
+      "urgency_level": "EMERGENCY",
+      "clinical_action": "Immediate emergency airway intervention and ambulance activation (Call 112 / 108 / Resuscitation).",
+      "clinical_rationale": "Stridor indicates critical upper airway narrowing that can progress to complete fatal occlusion rapidly."
+    },
+    "rule_cf": 1.0
+  },
+  {
+    "rule_id": "WHO_BEC_EMERG_02",
+    "name": "WHO Adult Triage: Severe Hypoxemic Respiratory Failure",
+    "description": "Adult oxygen saturation below 90% on room air constitutes an immediate life-threatening hypoxemia emergency.",
+    "category": "emergency_override",
+    "priority": 100,
+    "is_emergency_override": true,
+    "validation_status": "clinically_validated",
+    "source_id": "WHO_BEC_2020",
+    "section_number": "Module 3: Airway and Breathing, Critical Oxygenation Thresholds",
+    "antecedents": [
+      {
+        "fact_name": "oxygen_saturation",
+        "operator": "<",
+        "expected_value": 90,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "EMERGENCY",
+      "urgency_level": "EMERGENCY",
+      "clinical_action": "Immediate high-flow oxygen administration and emergency transfer to intensive care / emergency department.",
+      "clinical_rationale": "SpO2 < 90% corresponds to PaO2 < 60 mmHg on the oxyhemoglobin dissociation curve, indicating impending tissue hypoxia."
+    },
+    "rule_cf": 1.0
+  },
+  {
+    "rule_id": "WHO_BEC_EMERG_03",
+    "name": "WHO Adult Triage: Profound Shock / Decompensated Hypotension",
+    "description": "Adult systolic BP under 90 mmHg combined with altered peripheral perfusion is an immediate emergency override.",
+    "category": "emergency_override",
+    "priority": 100,
+    "is_emergency_override": true,
+    "validation_status": "clinically_validated",
+    "source_id": "WHO_BEC_2020",
+    "section_number": "Module 3: Circulation, Signs of Shock in Adults",
+    "antecedents": [
+      {
+        "fact_name": "systolic_bp",
+        "operator": "<",
+        "expected_value": 90,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "poor_peripheral_perfusion",
+        "operator": "==",
+        "expected_value": true,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "EMERGENCY",
+      "urgency_level": "EMERGENCY",
+      "clinical_action": "Immediate IV resuscitation, supine positioning, and emergency trauma/medical resuscitation team activation.",
+      "clinical_rationale": "Hypotension with poor perfusion marks decompensated circulatory shock with imminent organ failure."
+    },
+    "rule_cf": 1.0
+  },
+  {
+    "rule_id": "WHO_BEC_EMERG_04",
+    "name": "WHO Adult Triage: Unresponsive / Comatose (AVPU Scale U)",
+    "description": "Patient unresponsiveness to verbal and painful stimuli indicates critical neurological compromise.",
+    "category": "emergency_override",
+    "priority": 100,
+    "is_emergency_override": true,
+    "validation_status": "clinically_validated",
+    "source_id": "WHO_BEC_2020",
+    "section_number": "Module 3: Disability, AVPU Altered Responsiveness",
+    "antecedents": [
+      {
+        "fact_name": "avpu_scale",
+        "operator": "==",
+        "expected_value": "U",
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "EMERGENCY",
+      "urgency_level": "EMERGENCY",
+      "clinical_action": "Immediate airway protection, recovery position if non-trauma, and emergency resuscitation alert.",
+      "clinical_rationale": "An unresponsive patient loses airway protective reflexes (cough, gag) with severe aspiration and asphyxiation risk."
+    },
+    "rule_cf": 1.0
+  }
+]

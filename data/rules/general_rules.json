@@ -1,0 +1,119 @@
+[
+  {
+    "rule_id": "NICE_NG51_SEPSIS_01",
+    "name": "NICE NG51: High-Risk Sepsis Criteria (Extreme Tachycardia with Tachypnea in Infection)",
+    "description": "Suspected infection with Heart Rate > 130 bpm and Respiratory Rate >= 25 breaths/min indicates high-risk sepsis.",
+    "category": "general",
+    "priority": 75,
+    "is_emergency_override": false,
+    "validation_status": "clinically_validated",
+    "source_id": "NICE_NG51_2016",
+    "section_number": "Table 1: High risk criteria for adults aged 18 and over with suspected sepsis",
+    "antecedents": [
+      {
+        "fact_name": "suspected_infection_or_fever",
+        "operator": "==",
+        "expected_value": true,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "heart_rate",
+        "operator": ">",
+        "expected_value": 130,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "respiratory_rate",
+        "operator": ">=",
+        "expected_value": 25,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "EMERGENCY",
+      "urgency_level": "EMERGENCY",
+      "clinical_action": "Immediate 112 / 108 ambulance transfer to hospital emergency department for sepsis six bundle implementation.",
+      "clinical_rationale": "Severe physiological disturbance in the context of infection carries high mortality risk requiring immediate emergency resuscitation."
+    },
+    "rule_cf": 0.92
+  },
+  {
+    "rule_id": "NICE_NG51_SEPSIS_02",
+    "name": "NICE NG51: Moderate-to-High Risk Systemic Signs (Fever with Moderate Tachycardia)",
+    "description": "Fever > 38.3 C with Heart Rate > 100 bpm in an adult.",
+    "category": "general",
+    "priority": 50,
+    "is_emergency_override": false,
+    "validation_status": "clinically_validated",
+    "source_id": "NICE_NG51_2016",
+    "section_number": "Table 1: Moderate to high risk criteria for adults",
+    "antecedents": [
+      {
+        "fact_name": "temperature_celsius",
+        "operator": ">",
+        "expected_value": 38.3,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "heart_rate",
+        "operator": ">",
+        "expected_value": 100,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "URGENT",
+      "urgency_level": "URGENT",
+      "clinical_action": "Urgent medical review within 2 to 4 hours in an ambulatory or primary care setting.",
+      "clinical_rationale": "Systemic response to infection without immediate organ failure signs warrants prompt same-day clinical assessment."
+    },
+    "rule_cf": 0.78
+  },
+  {
+    "rule_id": "WHO_BEC_SELFCARE_FEVER_01",
+    "name": "WHO Adult Triage: Mild Isolated Fever without Physiological Derangement",
+    "description": "Isolated mild fever with preserved vitals (normal HR, normal RR, normal SpO2) and no danger signs.",
+    "category": "general",
+    "priority": 25,
+    "is_emergency_override": false,
+    "validation_status": "clinically_validated",
+    "source_id": "WHO_BEC_2020",
+    "section_number": "Module 2: Secondary Survey and Safety Netting",
+    "antecedents": [
+      {
+        "fact_name": "temperature_celsius",
+        "operator": ">=",
+        "expected_value": 37.8,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "heart_rate",
+        "operator": "<=",
+        "expected_value": 90,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "respiratory_rate",
+        "operator": "<=",
+        "expected_value": 20,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "dyspnea",
+        "operator": "==",
+        "expected_value": false,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "SELF_CARE",
+      "urgency_level": "SELF_CARE",
+      "clinical_action": "Self-care with oral hydration, antipyretics, rest, and strict red-flag safety-netting advice (return immediately if breathing worsens or confusion develops).",
+      "clinical_rationale": "Mild pyrexia with completely stable cardiorespiratory vitals and absence of distress can be safely observed at home initially."
+    },
+    "rule_cf": 0.75
+  }
+]

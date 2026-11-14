@@ -1,0 +1,62 @@
+[
+  {
+    "rule_id": "WHO_BEC_RESP_01",
+    "name": "WHO Adult Triage: Severe Tachypnea (Respiratory Rate >= 30)",
+    "description": "Adult respiratory rate >= 30 breaths/min indicates severe physiological distress or respiratory compensation.",
+    "category": "respiratory",
+    "priority": 75,
+    "is_emergency_override": false,
+    "validation_status": "clinically_validated",
+    "source_id": "WHO_BEC_2020",
+    "section_number": "Module 3: Airway and Breathing, Critical Vital Signs",
+    "antecedents": [
+      {
+        "fact_name": "respiratory_rate",
+        "operator": ">=",
+        "expected_value": 30,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "VERY_URGENT",
+      "urgency_level": "VERY_URGENT",
+      "clinical_action": "Urgent immediate medical assessment, supplemental oxygen if indicated, and arterial blood gas consideration.",
+      "clinical_rationale": "Marked tachypnea (RR >= 30) is one of the most sensitive single vital sign markers of impending physiological collapse."
+    },
+    "rule_cf": 0.88
+  },
+  {
+    "rule_id": "WHO_BEC_RESP_02",
+    "name": "WHO Adult Triage: Moderate Hypoxemia (SpO2 90-93% with Dyspnea)",
+    "description": "Adult oxygen saturation between 90% and 93% accompanied by active dyspnea.",
+    "category": "respiratory",
+    "priority": 75,
+    "is_emergency_override": false,
+    "validation_status": "clinically_validated",
+    "source_id": "WHO_BEC_2020",
+    "section_number": "Module 3: Airway and Breathing, Moderate Distress",
+    "antecedents": [
+      {
+        "fact_name": "oxygen_saturation",
+        "operator": "<=",
+        "expected_value": 93,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "dyspnea",
+        "operator": "==",
+        "expected_value": true,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "VERY_URGENT",
+      "urgency_level": "VERY_URGENT",
+      "clinical_action": "Prompt emergency department assessment within 1 hour; titrate oxygen to target SpO2 94-98% (or 88-92% in hypercapnic respiratory failure).",
+      "clinical_rationale": "SpO2 90-93% with breathlessness indicates compromised pulmonary gas exchange requiring rapid clinician evaluation."
+    },
+    "rule_cf": 0.85
+  }
+]

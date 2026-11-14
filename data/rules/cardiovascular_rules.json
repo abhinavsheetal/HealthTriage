@@ -1,0 +1,152 @@
+[
+  {
+    "rule_id": "NICE_CG95_ACS_01",
+    "name": "NICE CG95: Prolonged Acute Chest Pain (Suspected Acute Coronary Syndrome)",
+    "description": "Adult presenting with acute chest pain lasting 20 minutes or longer requires emergency ambulance transfer.",
+    "category": "cardiovascular",
+    "priority": 75,
+    "is_emergency_override": false,
+    "validation_status": "clinically_validated",
+    "source_id": "NICE_CG95_2016",
+    "section_number": "Section 1.1.2: Presentation with acute chest pain",
+    "antecedents": [
+      {
+        "fact_name": "acute_chest_pain",
+        "operator": "==",
+        "expected_value": true,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "pain_duration_minutes",
+        "operator": ">=",
+        "expected_value": 20,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "EMERGENCY",
+      "urgency_level": "EMERGENCY",
+      "clinical_action": "Emergency ambulance transfer (Call 112 / 108) to a hospital with emergency cardiac facilities. Do not transport by private vehicle.",
+      "clinical_rationale": "Chest pain lasting >= 20 minutes at rest is a classical presentation of myocardial ischemia or acute myocardial infarction requiring rapid ECG and reperfusion."
+    },
+    "rule_cf": 0.90
+  },
+  {
+    "rule_id": "NICE_CG95_ACS_02",
+    "name": "NICE CG95: Acute Chest Pain Radiating to Arm/Jaw with Autonomic Symptoms",
+    "description": "Acute chest pain radiating to left arm, neck, or jaw accompanied by diaphoresis or nausea.",
+    "category": "cardiovascular",
+    "priority": 75,
+    "is_emergency_override": false,
+    "validation_status": "clinically_validated",
+    "source_id": "NICE_CG95_2016",
+    "section_number": "Section 1.1.3: Symptoms suggestive of ACS",
+    "antecedents": [
+      {
+        "fact_name": "acute_chest_pain",
+        "operator": "==",
+        "expected_value": true,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "radiation_arm_neck_jaw",
+        "operator": "==",
+        "expected_value": true,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "diaphoresis",
+        "operator": "==",
+        "expected_value": true,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "EMERGENCY",
+      "urgency_level": "EMERGENCY",
+      "clinical_action": "Emergency blue-light ambulance transfer; keep patient resting and administer prescribed GTN if indicated by medical protocols.",
+      "clinical_rationale": "The combination of radiation to the arm/jaw with diaphoresis markedly elevates likelihood ratios for acute myocardial infarction."
+    },
+    "rule_cf": 0.95
+  },
+  {
+    "rule_id": "NICE_CG95_STABLE_01",
+    "name": "NICE CG95: Exertional Discomfort Relieved by Rest (Suspected Stable Angina)",
+    "description": "Chest discomfort brought on by physical exertion and relieved within minutes by rest, without acute rest pain.",
+    "category": "cardiovascular",
+    "priority": 50,
+    "is_emergency_override": false,
+    "validation_status": "clinically_validated",
+    "source_id": "NICE_CG95_2016",
+    "section_number": "Section 1.2: People presenting with stable chest pain",
+    "antecedents": [
+      {
+        "fact_name": "exertional_chest_discomfort",
+        "operator": "==",
+        "expected_value": true,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "relieved_by_rest",
+        "operator": "==",
+        "expected_value": true,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "acute_rest_pain",
+        "operator": "==",
+        "expected_value": false,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "URGENT",
+      "urgency_level": "URGENT",
+      "clinical_action": "Urgent primary care evaluation and referral to a rapid-access chest pain clinic within 1-2 weeks.",
+      "clinical_rationale": "Classical features of stable angina warrant prompt diagnostic cardiology evaluation but do not indicate acute emergency myocardial necrosis."
+    },
+    "rule_cf": 0.80
+  },
+  {
+    "rule_id": "EDU_DEMO_BENIGN_WALL_PAIN_01",
+    "name": "EDUCATIONAL DEMO: Reproducible Musculoskeletal Chest Wall Tenderness",
+    "description": "Demonstration rule: localized sharp chest wall pain fully reproduced by manual palpation, without dyspnea or cardiac risk features.",
+    "category": "educational_demonstration",
+    "priority": 25,
+    "is_emergency_override": false,
+    "validation_status": "educationally_demonstrated",
+    "source_id": "NICE_CG95_2016",
+    "section_number": "Section 1.3: Educational Demonstration - Musculoskeletal differential considerations",
+    "antecedents": [
+      {
+        "fact_name": "chest_wall_tenderness_reproduced",
+        "operator": "==",
+        "expected_value": true,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "dyspnea",
+        "operator": "==",
+        "expected_value": false,
+        "required_truth_value": "TRUE"
+      },
+      {
+        "fact_name": "acute_chest_pain",
+        "operator": "==",
+        "expected_value": false,
+        "required_truth_value": "TRUE"
+      }
+    ],
+    "consequent": {
+      "target_attribute": "triage_urgency",
+      "target_value": "STANDARD",
+      "urgency_level": "STANDARD",
+      "clinical_action": "Routine primary care assessment for musculoskeletal chest pain / costochondritis with safety-net advice.",
+      "clinical_rationale": "Educational rule demonstrating non-urgent triage classification for reproduced chest wall pain in the absence of red flags."
+    },
+    "rule_cf": 0.70
+  }
+]
