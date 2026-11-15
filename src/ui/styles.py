@@ -23,6 +23,28 @@ html, body, .stApp, [data-testid="stAppViewContainer"], [data-testid="stHeader"]
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
+/* Hide Streamlit Header, Toolbar, Main Menu, and Profile/Manage Badges */
+header[data-testid="stHeader"] {
+    visibility: hidden !important;
+    display: none !important;
+    height: 0px !important;
+}
+
+[data-testid="stToolbar"], #MainMenu, footer, [data-testid="stDecoration"], [data-testid="stStatusWidget"] {
+    visibility: hidden !important;
+    display: none !important;
+}
+
+/* Hide Streamlit Cloud bottom/top management pills and avatar badges */
+.viewerBadge_container__1QSob,
+.viewerBadge_link__1S137,
+[class*="viewerBadge"],
+[data-testid="manage-app-button"],
+#manage-app-button,
+[class*="manageApp"] {
+    display: none !important;
+    visibility: hidden !important;
+}
 [data-testid="stSidebar"], [data-testid="stSidebarContent"] {
     background-color: #F8FAFC !important;
     border-right: 1px solid #E2E8F0 !important;
